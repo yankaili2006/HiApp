@@ -34,7 +34,7 @@ module.exports = {
         var query = options.query || {};
         var func = options.func || '';
 
-        var apiServer = 'appbusi/' + func +
+        var apiServer = 'appbusi/' + func + '.json' +
             (appFunc.isEmpty(query) ? '' : '?');
 
         var name;
