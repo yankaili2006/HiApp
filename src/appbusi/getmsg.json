@@ -1,18 +1,14 @@
 {
-    "err_code": 0,
-    "err_msg": "success",
-    "data": [
-        "Yes!",
-        "No",
-        "Hm...",
-        "I am not sure",
-        "And what about you?",
-        "May be ;)",
-        "Lorem ipsum dolor sit amet, consectetur",
-        "What?",
-        "Are you sure?",
-        "Of course",
-        "Need to think about it",
-        "Amazing!!!"
+    "result": "00",
+    "cnt": 1,
+    "list": [
+        {
+            "CONTENT": "hello",
+            "SMSPOCESSOR_ID": "9b005db9b83c4971b8960240f4229df4",
+            "CREATETIME": "2015-11-16 12:46:23",
+            "STATUS": "0",
+            "MSISDN": "1064805103117",
+            "TYPE": "·¢ËÍ"
+        }
     ]
 }
