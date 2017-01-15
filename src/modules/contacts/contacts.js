@@ -8,6 +8,28 @@ var contacts = {
     init: function(){
         contacts.bindEvents();
     },
+    //讯物联加载卡号列表
+    loadContactsForXWL:function(){
+        if(contacts.beforeLoadContacts()) {
+            hiApp.searchbar('#contactView .searchbar',{
+                searchList: '.contacts-list',
+                searchIn: '.item-title'
+            });
+
+            service.loadContactsForXWL(function(c){
+                setTimeout(function(){
+                    var renderData = {
+                        contacts: c
+                    };
+                    var output = appFunc.renderTpl(template, renderData);
+                    $$('#contactView .contacts-list ul').html(output);
+
+                    hiApp.hideIndicator();
+
+                },500);
+            });
+        }
+    },
     loadContacts: function(){
         if(contacts.beforeLoadContacts()) {
             hiApp.searchbar('#contactView .searchbar',{
@@ -41,7 +63,7 @@ var contacts = {
         var bindings = [{
             element: '#contactView',
             event: 'show',
-            handler: contacts.loadContacts
+            handler: contacts.loadContactsForXWL
         }];
 
         appFunc.bindEvents(bindings);

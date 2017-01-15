@@ -45,7 +45,7 @@ module.exports = {
     renderMessages: function(message){
         hiApp.showIndicator();
 
-        service.getMessages(function(m){
+        service.getMessagesForXWL(function(m){
             setTimeout(function(){
                 var renderData = {
                     message: m

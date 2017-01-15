@@ -53,6 +53,8 @@ module.exports = {
         options.data = options.data ? options.data : '';
 
         //If you access your server api ,please user `post` method.
+        options.method = options.method || 'GET';
+        //options.method = options.method || 'POST';
 
         if(appFunc.isPhonegap()){
             //Check network connection

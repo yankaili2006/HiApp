@@ -7,5 +7,13 @@ module.exports = {
         }, function (res) {
             callback(res.data);
         });
+    },
+    //讯物联查询卡号列表
+    loadContactsForXWL: function (callback) {
+        xhr.simpleCallForXWL({
+            func: 'getCardList'
+        }, function(res){
+            callback(res.data);
+        });
     }
 };

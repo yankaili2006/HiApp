@@ -32,6 +32,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './src/api', to: 'api' },
+      { from: './src/appbusi', to: 'appbusi'},
       { from: './src/page', to: 'page' },
       { from: './src/res', to: 'res' }
     ])
