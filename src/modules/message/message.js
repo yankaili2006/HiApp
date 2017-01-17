@@ -17,35 +17,35 @@ module.exports = {
 
         service.getAnswers(function(a){
             answers = a;
+        });
 
-            var bindings = [{
-                element: '.ks-messages-form',
-                event: 'submit',
-                handler: that.submitMessage
-            },{
-                element: '.ks-send-message',
-                event: 'click',
-                handler: that.triggerSubmit
-            }];
+        var bindings = [{
+            element: '.ks-messages-form',
+            event: 'submit',
+            handler: that.submitMessage
+        },{
+            element: '.ks-send-message',
+            event: 'click',
+            handler: that.triggerSubmit
+        }];
 
-            appFunc.bindEvents(bindings);
+        appFunc.bindEvents(bindings);
 
-            var name = query.nickname;
-            $$('.chat-name').html(name);
+        var cardno = query.nickname;
+        $$('.chat-name').html(cardno);
 
-            // render messages
-            that.renderMessages();
+        // render messages
+        that.renderMessages(cardno);
 
-            // Init Messages
-            messageLayout = hiApp.messages('#contactView .messages', {
-                autoLayout:true
-            });
+        // Init Messages
+        messageLayout = hiApp.messages('#contactView .messages', {
+            autoLayout:true
         });
     },
-    renderMessages: function(message){
+    renderMessages: function(cardno){
         hiApp.showIndicator();
 
-        service.getMessagesForXWL(function(m){
+        service.getMessagesForXWL(cardno, function(m){
             setTimeout(function(){
                 var renderData = {
                     message: m

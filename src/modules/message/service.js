@@ -1,6 +1,6 @@
 var xhr = require('../utils/xhr');
 
-module.exports = {
+var service = {
     getAnswers: function(callback) {
         xhr.simpleCall({
             func: 'answers'
@@ -24,11 +24,24 @@ module.exports = {
         });
     },
     //get Message fro xwl
-    getMessagesForXWL: function(callback){
+    getMessagesForXWL: function(cardno, callback){
         xhr.simpleCallForXWL({
-            func: 'message'
+            func: 'getmsg',
+            query: {
+                'userId': 'c2cca0f7153948e8a5241feca653fe28',
+                'msisdn': cardno,
+                'startDate': '20160101',
+                'endDate': '20171201',
+                'pno': '1',
+                'psize': '10'
+            }
         },function(res){
-            callback(res.data);
+            var list = res.list;
+            for(var i = 0; i < list.length; i++){
+                list[i].from = "received";
+            }
+            callback(res.list);
         });
     }
 };
+module.exports = service;
