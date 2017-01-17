@@ -23,7 +23,7 @@ var service = {
             callback(res.data);
         });
     },
-    //get Message fro xwl
+    //get Message for xwl
     getMessagesForXWL: function(cardno, callback){
         xhr.simpleCallForXWL({
             func: 'getmsg',
@@ -42,6 +42,21 @@ var service = {
             }
             callback(res.list);
         });
+    },
+
+    // send message to xwl
+    sendMessageToXWL: function(cardno, content, callback){
+        xhr.simpleCallForXWL({
+            func: 'sendmsg',
+            query: {
+                'userId': 'c2cca0f7153948e8a5241feca653fe28',
+                'msisdn': cardno,
+                'content': content
+            }
+        },function(res){
+            callback(res);
+        });
     }
+
 };
 module.exports = service;

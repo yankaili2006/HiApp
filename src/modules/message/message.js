@@ -5,19 +5,15 @@ var appFunc = require('../utils/appFunc'),
     template = require('./message.tpl.html');
 
 var conversationStarted = false,
-    answers = {},
     answerTimeout,
-    messageLayout;
+    messageLayout,
+    cardno;
 
 module.exports = {
     init: function(query){
         var that = this;
 
         appFunc.hideToolbar();
-
-        service.getAnswers(function(a){
-            answers = a;
-        });
 
         var bindings = [{
             element: '.ks-messages-form',
@@ -31,7 +27,7 @@ module.exports = {
 
         appFunc.bindEvents(bindings);
 
-        var cardno = query.nickname;
+        cardno = query.nickname;
         $$('.chat-name').html(cardno);
 
         // render messages
@@ -79,12 +75,24 @@ module.exports = {
 
         // Add answer after timeout
         if (answerTimeout) clearTimeout(answerTimeout);
-        answerTimeout = setTimeout(function () {
-            messageLayout.addMessage({
-                text: answers[Math.floor(Math.random() * answers.length)],
-                type: 'received'
-            });
-        }, 1000);
+
+        // Send msg to xwl server
+        service.sendMessageToXWL(cardno, messageText, function(data){
+            answerTimeout = setTimeout(function () {
+                var result = '';
+                if(data.result == '00'){
+                    result = '发送成功';
+                }else if(data.result == '01'){
+                    result = '发送失败';
+                }else{
+                    result = '发送结果未知';
+                }
+                messageLayout.addMessage({
+                    text: result,
+                    type: 'received'
+                });
+            }, 1000);
+        });
     },
     triggerSubmit: function(){
         $$('.ks-messages-form').trigger('submit');
