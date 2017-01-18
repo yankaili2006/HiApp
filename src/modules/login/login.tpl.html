@@ -1,0 +1,8 @@
+{{#each message}}
+{{#if createTime}}
+<div class="messages-date">{{createTime}}</div>
+{{/if}}
+<div class="message message-{{from}} message-last">
+    <div class="message-text">{{content}}</div>
+</div>
+{{/each}}

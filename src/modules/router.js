@@ -5,7 +5,7 @@ var index = require('./app/app'),
     aboutModule = require('./about/about'),
     languageModule = require('./language/language'),
     messageModule = require('./message/message');
-
+    loginModule = require('./login/login');
 module.exports = {
     init: function() {
         var that = this;
@@ -48,6 +48,9 @@ module.exports = {
                 break;
             case 'language':
                 languageModule.init();
+                break;
+            case 'login' :
+                loginModule.init();
                 break;
         }
     }
