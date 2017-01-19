@@ -25,8 +25,9 @@ var settingView = {
     },
     logOut: function(){
         hiApp.confirm(i18n.setting.confirm_logout,function(){
-            settingF7View.router.loadPage('page/login.html');
+            //settingF7View.router.loadPage('page/login.html');
             //hiApp.showTab('#ourView');
+            hiApp.loginScreen();
         });
     },
     bindEvents: function(){
