@@ -38,7 +38,8 @@ module.exports = {
         nickname: '用户名',
         points: '积分',
         confirm_logout:'你确定要退出登录吗？',
-        current_version:'当前版本为'
+        current_version:'当前版本为',
+        login_btn: '登录',
     },
     login: {
         loginname_placeholder: '请输入账号',
@@ -48,7 +49,9 @@ module.exports = {
         forgot_pwd: '忘记密码',
         err_empty_input: '账户或密码不能为空',
         err_illegal_email: '登录账户必须是Email',
-        login: '正在登录...'
+        login: '正在登录...',
+        username: '用户名',
+        password: '密码'
     },
     timeline:{
         forward:'转发',

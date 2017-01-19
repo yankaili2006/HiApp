@@ -75,6 +75,10 @@ var app = {
             modalTitle: i18n.global.modal_title,
             modalButtonOk: i18n.global.modal_button_ok,
             modalButtonCancel: i18n.global.cancel,
+            preroute: function(view, options){
+                //view.router.loadPage('page/login.html');
+                //return false;
+            },
             template7Pages: true,
             template7Data: {
                 'page:item': {
@@ -100,6 +104,9 @@ var app = {
                     back: i18n.global.back,
                     done: i18n.global.done,
                     switchLanguage: i18n.global.switch_language
+                },
+                'page:login':{
+                    login: i18n.login.login_btn
                 }
             }
         });
@@ -112,7 +119,7 @@ var app = {
             dynamicNavbar: true
         });
 
-        hiApp.addView('#settingView', {
+        window.settingF7View = hiApp.addView('#settingView', {
             dynamicNavbar: true
         });
 
