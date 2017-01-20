@@ -29,13 +29,18 @@ module.exports = {
         return apiServer.replace(/&$/gi, '');
     },
 
-    //讯物联URL
+    //xwl get URL
     getRequestURLForXWL: function(options){
         var query = options.query || {};
         var func = options.func || '';
 
         var apiServer = 'appbusi/' + func + '.json' +
             (appFunc.isEmpty(query) ? '' : '?');
+
+        if(func === 'login'){
+            apiServer = 'appuser/' + func + '.json' +
+                (appFunc.isEmpty(query) ? '' : '?');
+        }
 
         var name;
         for(name in query){
@@ -45,7 +50,7 @@ module.exports = {
         return apiServer.replace(/&$/gi, '');
     },
 
-    //讯物联调用ajax
+    //xwl ajax
     simpleCallForXWL : function(options, callback){
         var that = this;
 

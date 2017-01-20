@@ -1,0 +1,16 @@
+{
+    "result":"00",
+    "user": {
+        "USER_ID":"9b07afa6f8534a1d8a5b887bb561d697",
+        "USERNAME":"888",
+        "PASSWORD":"17212f58b65b903eeb18afa03ec9a4dec187c098",
+        "NAME":"测试账户",
+        "RIGHTS":"",
+        "ROLE_ID":"1c21fe26b9b34e86858a5801a2c75e8a",
+        "LAST_LOGIN":"2017-01-20 05:54:07",
+        "IP":"61.182.83.144",
+        "STATUS":"0",
+        "bz":"","SKIN":"default","email":"1@qq.com","number":"888","phone":"12345678901",
+        "creator":"kongjianguo","appId":"xwl.sender","id":0,"version":0
+    }
+}

@@ -1,11 +1,10 @@
-require('./login.less');
-
 var appFunc = require('../utils/appFunc'),
-    service = require('./service'),
-    template = require('./login.tpl.html');
+    service = require('./service');
 
 module.exports = {
     init: function(){
-        appFunc.hideToolbar();
+    },
+    login: function(options, callback){
+        service.login(options, callback);
     }
 };

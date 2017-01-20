@@ -8,17 +8,16 @@ var service = {
             callback(res.data);
         });
     },
-    //讯物联查询卡号列表
+    //xwl load card list
     loadContactsForXWL: function (callback) {
         xhr.simpleCallForXWL({
             func: 'getCardList'
         }, function(res){
-            //转换json格式
             var data = service.convert(res);
             callback(data);
         });
     },
-    //转换讯物联json cards json格式
+    // convert the xwl backend json to frontend json
     convert: function(data){
         var result = [];
         var cards3815 = data["3815"];

@@ -4,7 +4,8 @@ require('../style/less/app.less');
 var appFunc = require('./utils/appFunc'),
     appService = require('./services/appService'),
     router = require('./router'),
-    index = require('./app/app');
+    index = require('./app/app'),
+    loginModule = require('./login/login');
 
 var app = {
     initialize: function() {
@@ -126,6 +127,28 @@ var app = {
         // init app
         router.init();
         index.init();
+
+        //login
+        appFunc.bindEvents([{
+            element: '#login_href',
+            event: 'click',
+            handler: function(){
+                var username = $$('input[name=username]').val();
+                var password = $$('input[name=password]').val();
+                loginModule.login({
+                    username : username,
+                    password : password
+                },function(res){
+                    var result = res.result;
+                    if(result === '00'){
+                        //login success
+                        hiApp.alert('login success');
+                        hiApp.closeModal('.login-screen');
+                    }
+                });
+            }
+        }]);
+
     }
 };
 

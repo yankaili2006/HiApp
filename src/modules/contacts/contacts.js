@@ -8,7 +8,7 @@ var contacts = {
     init: function(){
         contacts.bindEvents();
     },
-    //讯物联加载卡号列表
+    //xwl load card list
     loadContactsForXWL:function(){
         if(contacts.beforeLoadContacts()) {
             hiApp.searchbar('#contactView .searchbar',{

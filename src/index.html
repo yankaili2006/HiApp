@@ -123,8 +123,8 @@
 <!-- Should be a direct child of BODY -->
 <div class="login-screen modal-in">
     <!-- Default view-page layout -->
-    <div class="view">
-        <div class="page">
+    <div id="loginView" class="view">
+        <div data-page="login-screen" class="page">
             <!-- page-content has additional login-screen content -->
             <div class="page-content login-screen-content">
                 <div class="login-screen-title">My App</div>
@@ -153,7 +153,7 @@
                     <div class="list-block">
                         <ul>
                             <li>
-                                <a href="#" class="item-link list-button">登录</a>
+                                <a id="login_href" href="#" class="item-link list-button">登录</a>
                             </li>
                         </ul>
                         <div class="list-block-label">
