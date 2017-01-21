@@ -1,5 +1,5 @@
 var xhr = require('../utils/xhr');
-
+var loginModule = require('../login/login');
 var service = {
     loadContacts: function(callback) {
         xhr.simpleCall({
@@ -10,8 +10,12 @@ var service = {
     },
     //xwl load card list
     loadContactsForXWL: function (callback) {
+        var userId = loginModule.getUser().USER_ID;
         xhr.simpleCallForXWL({
-            func: 'getCardList'
+            func: 'getCardList',
+            query: {
+                userId: userId
+            }
         }, function(res){
             var data = service.convert(res);
             callback(data);

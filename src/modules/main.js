@@ -142,8 +142,10 @@ var app = {
                     var result = res.result;
                     if(result === '00'){
                         //login success
-                        hiApp.alert('login success');
+                        //hiApp.alert('login success');
                         hiApp.closeModal('.login-screen');
+                    }else{
+                        hiApp.alert('login fail');
                     }
                 });
             }

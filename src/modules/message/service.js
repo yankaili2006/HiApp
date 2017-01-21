@@ -1,4 +1,6 @@
 var xhr = require('../utils/xhr');
+var loginModule = require('../login/login');
+var appFunc = require('../utils/appFunc');
 
 var service = {
     getAnswers: function(callback) {
@@ -25,15 +27,20 @@ var service = {
     },
     //get Message for xwl
     getMessagesForXWL: function(cardno, callback){
+        var userId = loginModule.getUser().USER_ID;
+        var startDate = '19700101';
+        var endDate = appFunc.getYYYYMMDD();
+        var pno = '1';
+        var psize = '100000';
         xhr.simpleCallForXWL({
             func: 'getmsg',
             query: {
-                'userId': 'c2cca0f7153948e8a5241feca653fe28',
+                'userId': userId,
                 'msisdn': cardno,
-                'startDate': '20160101',
-                'endDate': '20171201',
-                'pno': '1',
-                'psize': '10'
+                'startDate': startDate,
+                'endDate': endDate,
+                'pno': pno,
+                'psize': psize
             }
         },function(res){
             var list = res.list;
@@ -46,10 +53,11 @@ var service = {
 
     // send message to xwl
     sendMessageToXWL: function(cardno, content, callback){
+        var userId = loginModule.getUser().USER_ID;
         xhr.simpleCallForXWL({
             func: 'sendmsg',
             query: {
-                'userId': 'c2cca0f7153948e8a5241feca653fe28',
+                'userId': userId,
                 'msisdn': cardno,
                 'content': content
             }

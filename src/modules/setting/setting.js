@@ -1,7 +1,8 @@
 require('./setting.less');
 
 var appFunc = require('../utils/appFunc'),
-    template = require('./setting.tpl.html');
+    template = require('./setting.tpl.html'),
+    loginModule = require('../login/login');
 
 var settingView = {
     init: function(){
@@ -9,13 +10,10 @@ var settingView = {
     },
     renderSetting: function(){
         if($$('#settingView .page-content')[0]) return;
-
         hiApp.showIndicator();
-
+        var username = loginModule.getUser().USERNAME;
         var renderData = {
-            avatarUrl: 'http://lorempixel.com/68/68/people/7/',
-            nickName: 'HiApp',
-            points: '100'
+            nickName: username
         };
 
         var output = appFunc.renderTpl(template, renderData);
@@ -27,6 +25,7 @@ var settingView = {
         hiApp.confirm(i18n.setting.confirm_logout,function(){
             //settingF7View.router.loadPage('page/login.html');
             //hiApp.showTab('#ourView');
+            loginModule.clearUser();
             hiApp.loginScreen();
         });
     },
