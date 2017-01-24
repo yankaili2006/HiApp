@@ -34,6 +34,7 @@ module.exports = {
       { from: './src/api', to: 'api' },
       { from: './src/appbusi', to: 'appbusi'},
       { from: './src/appuser', to: 'appuser'},
+      { from: './src/appqry', to: 'appqry'},
       { from: './src/page', to: 'page' },
       { from: './src/res', to: 'res' }
     ])
