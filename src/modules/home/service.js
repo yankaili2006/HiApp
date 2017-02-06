@@ -1,12 +1,25 @@
 var xhr = require('../utils/xhr');
 
-module.exports = {
+var service = {
     getTimeline: function(callback){
-        xhr.simpleCall({
-            func:'timeline'
+        xhr.simpleCallForXWL({
+            func:'getmsggroup'
         },function(res){
-            callback(res.data);
+            var data = service.convertTimeline(res);
+            callback(data);
         });
+    },
+    convertTimeline: function(data){
+        var res = [];
+        for(tl in data){
+            if(tl !== 'result'){
+                if(data[tl].length > 0){
+                    data[tl][0]["length"] = data[tl].length;
+                    res.push(data[tl][0]);
+                }
+            }
+        }
+        return res;
     },
     refreshTimeline: function(callback){
         xhr.simpleCall({
@@ -23,3 +36,5 @@ module.exports = {
         });
     }
 };
+
+module.exports = service;

@@ -24,26 +24,22 @@ var service = {
     // convert the xwl backend json to frontend json
     convert: function(data){
         var result = [];
-        var cards3815 = data["3815"];
-        for(var i = 0; i < cards3815.length; i++){
-            result[i] = {
-                cardno : cards3815[i],
-                cardsegment : '3815'
-            };
-            if(i == 0){
-                result[i].header = '3815';
+        if(data.result !== '00')
+            return result;
+        for(var segment in data){
+            if(segment !== 'result'){
+                //segment
+                var cardarray = data[segment];
+                for(var i = 0; i < cardarray.length; i++){
+                    cardarray[i].cardsegment = segment;
+                    if(i === 0){
+                        cardarray[i].header = segment;
+                    }
+                    result.push(cardarray[i]);
+                }
             }
         }
-        var cards3833 = data["3833"];
-        for(var j = 0; j < cards3833.length; j++){
-           result[i + j ] = {
-               cardno : cards3833[j],
-               cardsegment : '3833'
-           };
-            if(j == 0){
-                result[i + j].header = '3833';
-            }
-        }
+
         return result;
     }
 };

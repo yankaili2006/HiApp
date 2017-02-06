@@ -36,7 +36,9 @@ module.exports = {
       { from: './src/appuser', to: 'appuser'},
       { from: './src/appqry', to: 'appqry'},
       { from: './src/page', to: 'page' },
-      { from: './src/res', to: 'res' }
+      { from: './src/res', to: 'res' },
+      { from: './src/img', to: 'img' },
+      { from: './src/font', to: 'font'}
     ])
   ],
   module: {

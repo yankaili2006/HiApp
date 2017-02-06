@@ -124,13 +124,7 @@ var home = {
     },
     renderTimeline: function(tl, type){
         var renderData = {
-            timeline: tl,
-            finalText: function(){
-                return appFunc.matchUrl(this.text);
-            },
-            time: function(){
-                return appFunc.timeFormat(this.created_at);
-            }
+            timeline: tl
         };
         var output = appFunc.renderTpl(template, renderData);
         if(type === 'prepend'){
