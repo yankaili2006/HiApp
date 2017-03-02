@@ -53,11 +53,11 @@ var service = {
 
     // send message to xwl
     sendMessageToXWL: function(cardno, content, callback){
-        var userId = loginModule.getUser().USER_ID;
+
         xhr.simpleCallForXWL({
             func: 'sendmsg',
             query: {
-                'userId': userId,
+                'userId': localStorage.uid,
                 'msisdn': cardno,
                 'content': content
             }

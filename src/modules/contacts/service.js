@@ -10,11 +10,11 @@ var service = {
     },
     //xwl load card list
     loadContactsForXWL: function (callback) {
-        var userId = loginModule.getUser().USER_ID;
+
         xhr.simpleCallForXWL({
             func: 'getCardList',
             query: {
-                userId: userId
+                userId: localStorage.uid
             }
         }, function(res){
             var data = service.convert(res);

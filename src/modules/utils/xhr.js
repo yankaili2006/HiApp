@@ -35,17 +35,19 @@ module.exports = {
         var func = options.func || '';
         var test = false;
         var postfix = '.json';
+        var prefix = '';
         if(!test){
             postfix = '';
+            prefix = 'http://wx.zhixuntongda.com/';
         }
-        var apiServer = 'appbusi/' + func + postfix +
+        var apiServer = prefix + 'appbusi/' + func + postfix +
             (appFunc.isEmpty(query) ? '' : '?');
 
         if(func === 'login'){
-            apiServer = 'appuser/' + func + postfix +
+            apiServer = prefix + 'appuser/' + func + postfix +
                 (appFunc.isEmpty(query) ? '' : '?');
         }else if(func === 'getCardList'){
-            apiServer = 'appqry/' + func + postfix +
+            apiServer = prefix + 'appqry/' + func + postfix +
                 (appFunc.isEmpty(query) ? '' : '?');
         }
 
