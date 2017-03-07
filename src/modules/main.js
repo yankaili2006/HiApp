@@ -139,30 +139,6 @@ var app = {
         // init app
         router.init();
         index.init();
-
-        //login
-        appFunc.bindEvents([{
-            element: '#login_href',
-            event: 'click',
-            handler: function(){
-                var username = $$('input[name=username]').val();
-                var password = $$('input[name=password]').val();
-                loginModule.login({
-                    username : username,
-                    password : password
-                },function(res){
-                    var result = res.result;
-                    if(result === '00'){
-                        //login success
-                        //hiApp.alert('login success');
-                        hiApp.closeModal('.login-screen');
-                    }else{
-                        hiApp.alert('login fail');
-                    }
-                });
-            }
-        }]);
-
     }
 };
 

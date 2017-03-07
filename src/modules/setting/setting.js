@@ -2,7 +2,7 @@ require('./setting.less');
 
 var appFunc = require('../utils/appFunc'),
     template = require('./setting.tpl.html'),
-    loginModule = require('../login/login');
+    bindModule = require('../bind/bind');
 
 var settingView = {
     init: function(){
@@ -11,7 +11,7 @@ var settingView = {
     renderSetting: function(){
         if($$('#settingView .page-content')[0]) return;
         hiApp.showIndicator();
-        var username = loginModule.getUser().USERNAME;
+        var username = localStorage.username;
         var renderData = {
             nickName: username
         };
@@ -25,7 +25,7 @@ var settingView = {
         hiApp.confirm(i18n.setting.confirm_logout,function(){
             //settingF7View.router.loadPage('page/login.html');
             //hiApp.showTab('#ourView');
-            loginModule.clearUser();
+            //loginModule.clearUser();
             hiApp.loginScreen();
         });
     },
@@ -44,6 +44,11 @@ var settingView = {
             selector: '.update-button',
             event: 'click',
             //handler: settingView.checkVersion
+        },{
+            element: '#settingView',
+            selector: '.open-bind-popup',
+            event: 'click',
+            handler: bindModule.openBindPopup
         }];
         appFunc.bindEvents(bindings);
     }
