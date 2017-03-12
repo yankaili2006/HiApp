@@ -11,7 +11,7 @@ var settingView = {
     renderSetting: function(){
         if($$('#settingView .page-content')[0]) return;
         hiApp.showIndicator();
-        var username = localStorage.username;
+        var username = localStorage.uid;
         var renderData = {
             nickName: username
         };

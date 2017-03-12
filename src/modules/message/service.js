@@ -27,7 +27,7 @@ var service = {
     },
     //get Message for xwl
     getMessagesForXWL: function(cardno, callback){
-        var userId = loginModule.getUser().USER_ID;
+        var userId = localStorage.uid;
         var startDate = '19700101';
         var endDate = appFunc.getYYYYMMDD();
         var pno = '1';

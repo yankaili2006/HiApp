@@ -14,7 +14,7 @@ var home = {
         var that = this;
 
         service.getTimeline(function(tl){
-            that.renderTimeline(tl);
+            home.renderTimeline(tl);
 
             hiApp.hideIndicator();
 
@@ -149,7 +149,7 @@ var home = {
             element: '#homeView',
             selector: '.pull-to-refresh-content',
             event: 'refresh',
-            handler: this.refreshTimeline
+            handler: this.getTimeline
         },{
             element: '#homeView',
             selector: '.pull-to-refresh-content',
@@ -159,22 +159,12 @@ var home = {
             element: '#homeView',
             selector: '.refresh-click',
             event: 'click',
-            handler: this.refreshTimelineByClick
-        },{
-            element: '#homeView',
-            selector: 'a.open-send-popup',
-            event: 'click',
-            handler: inputModule.openSendPopup
+            handler: this.getTimeline
         },{
             element: '#homeView',
             selector: '.home-timeline .ks-facebook-card',
             event: 'click',
             handler: this.openItemPage
-        },{
-            element: '#homeView',
-            selector:'div.card-content .item-image>img',
-            event: 'click',
-            handler: this.photoBrowser
         }];
 
         appFunc.bindEvents(bindings);
