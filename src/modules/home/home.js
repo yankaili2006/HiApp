@@ -140,7 +140,8 @@ var home = {
             return false;
         }
         var itemId = $$(this).data('id');
-        homeF7View.router.loadPage('page/tweet.html?id=' + itemId);
+        //homeF7View.router.loadPage('page/tweet.html?id=' + itemId);
+        homeF7View.router.loadPage('page/message.html?nickname=' + itemId + '&source=home');
     },
     bindEvent: function(){
 

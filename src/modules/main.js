@@ -77,8 +77,9 @@ var app = {
             modalButtonOk: i18n.global.modal_button_ok,
             modalButtonCancel: i18n.global.cancel,
             preroute: function(view, options){
-                //view.router.loadPage('page/login.html');
-                //return false;
+                console.log(view);
+                console.log(options);
+                return true;
             },
             template7Pages: true,
             template7Data: {
@@ -116,7 +117,7 @@ var app = {
             dynamicNavbar: true
         });
 
-        hiApp.addView('#contactView', {
+        window.contactF7View = hiApp.addView('#contactView', {
             dynamicNavbar: true
         });
 

@@ -34,9 +34,15 @@ module.exports = {
         that.renderMessages(cardno);
 
         // Init Messages
-        messageLayout = hiApp.messages('#contactView .messages', {
-            autoLayout:true
-        });
+        if(query.source == 'home'){
+            messageLayout = hiApp.messages('#homeView .messages', {
+                autoLayout:true
+            });
+        }else{
+            messageLayout = hiApp.messages('#contactView .messages', {
+                autoLayout:true
+            });
+        }
     },
     renderMessages: function(cardno){
         hiApp.showIndicator();
