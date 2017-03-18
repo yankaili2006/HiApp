@@ -33,23 +33,15 @@ module.exports = {
     getRequestURLForXWL: function(options){
         var query = options.query || {};
         var func = options.func || '';
-        var test = false;
+        var test = true;
         var postfix = '.json';
         var prefix = '';
         if(!test){
             postfix = '';
             prefix = 'http://wx.zhixuntongda.com/';
         }
-        var apiServer = prefix + 'appbusi/' + func + postfix +
+        var apiServer = prefix + func + postfix +
             (appFunc.isEmpty(query) ? '' : '?');
-
-        if(func === 'login'){
-            apiServer = prefix + 'appuser/' + func + postfix +
-                (appFunc.isEmpty(query) ? '' : '?');
-        }else if(func === 'getCardList'){
-            apiServer = prefix + 'appqry/' + func + postfix +
-                (appFunc.isEmpty(query) ? '' : '?');
-        }
 
         var name;
         for(name in query){

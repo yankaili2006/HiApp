@@ -128,14 +128,14 @@ var app = {
         //读取cookie,如果存在uid和openid,那么说明是在微信端打开的网页，则表明已登录
         //如果uid是test则表明为测试账号
         var uid = appFunc.getCookie('uid');
-        var openid = appFunc.getCookie('openid');
+        var openId = appFunc.getCookie('openId');
         console.log('uid:' + uid);
-        console.log('openid:' + openid);
+        console.log('openid:' + openId);
         if(uid == null || uid == ''){
             uid = 'test';
         }
         localStorage.uid = uid;
-        localStorage.openid = openid;
+        localStorage.openId = openId;
 
         // init app
         router.init();

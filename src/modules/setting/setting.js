@@ -21,12 +21,13 @@ var settingView = {
 
         hiApp.hideIndicator();
     },
-    logOut: function(){
+    unbind: function(){
         hiApp.confirm(i18n.setting.confirm_logout,function(){
+            bindModule.unbindUser();
             //settingF7View.router.loadPage('page/login.html');
             //hiApp.showTab('#ourView');
             //loginModule.clearUser();
-            hiApp.loginScreen();
+            //hiApp.loginScreen();
         });
     },
     bindEvents: function(){
@@ -38,7 +39,7 @@ var settingView = {
             element: '#settingView',
             selector: '.logout-button',
             event: 'click',
-            handler: settingView.logOut
+            handler: settingView.unbind
         },{
             element: '#settingView',
             selector: '.update-button',

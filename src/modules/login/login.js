@@ -7,7 +7,7 @@ module.exports = {
     login: function(options, callback){
         var that = this;
         xhr.simpleCallForXWL({
-            func:'login',
+            func:'appuser/login',
             query: {
                 username : options.username,
                 password : options.password

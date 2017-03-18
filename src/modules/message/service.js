@@ -13,7 +13,7 @@ var service = {
     //get answers for xwl
     getAnswersForXWL: function(callback){
         xhr.simpleCallForXWL({
-            func: 'answers'
+            func: 'appbusi/answers'
         },function(res){
             callback(res.data);
         });
@@ -33,7 +33,7 @@ var service = {
         var pno = '1';
         var psize = '100000';
         xhr.simpleCallForXWL({
-            func: 'getmsg',
+            func: 'appbusi/getmsg',
             query: {
                 'userId': userId,
                 'msisdn': cardno,
@@ -55,7 +55,7 @@ var service = {
     sendMessageToXWL: function(cardno, content, callback){
 
         xhr.simpleCallForXWL({
-            func: 'sendmsg',
+            func: 'appbusi/sendmsg',
             query: {
                 'userId': localStorage.uid,
                 'msisdn': cardno,

@@ -37,7 +37,7 @@ module.exports = {
         login_out: '解绑定',
         nickname: '用户名',
         points: '积分',
-        confirm_logout:'你确定要退出登录吗？',
+        confirm_logout:'你确定要解除绑定吗？',
         current_version:'当前版本为',
         login_btn: '绑定',
     },

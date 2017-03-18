@@ -3,7 +3,7 @@ var xhr = require('../utils/xhr');
 var service = {
     getTimeline: function(callback){
         xhr.simpleCallForXWL({
-            func:'getmsggroup',
+            func:'appbusi/getmsggroup',
             query:{
                 userId: localStorage.uid,
                 pno:1,

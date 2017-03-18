@@ -23,18 +23,18 @@ var bindModule = {
     bindUser: function(){
         var username = $$('input[name=username]').val();
         var password = $$('input[name=password]').val();
-        var openid = localStorage.openid;
+        var openid = localStorage.openId;
         if(null === openid || openid === undefined || openid === ''){
             hiApp.alert('非微信端访问');
             return;
         }
         hiApp.showPreloader(i18n.index.sending);
         xhr.simpleCallForXWL({
-            func:'bindWeixinUser',
+            func:'appuser/bind',
             query:{
-                username: username,
+                userId: username,
                 password: password,
-                openid: openid
+                openId: openid
             }
         },function(res){
             hiApp.hidePreloader();
@@ -47,6 +47,35 @@ var bindModule = {
                 }, 1300);
             }else{
                 hiApp.alert('绑定失败');
+            }
+        });
+    },
+    unbindUser: function(){
+        var openId = localStorage.openId;
+        var uid = localStorage.uid;
+        if(null === openId || openId === undefined || openId === ''){
+            hiApp.alert('非微信端访问');
+            return;
+        }
+        if(null === uid || uid === undefined || uid === '' || uid === 'test'){
+            hiApp.alert('当前用户为匿名用户或测试用户，无法解除绑定');
+            return;
+        }
+        hiApp.showPreloader(i18n.index.sending);
+        xhr.simpleCallForXWL({
+            func:'appuser/unbind',
+            query:{
+                openId: openId
+            }
+        },function(res){
+            hiApp.hidePreloader();
+            var result = res.result;
+            if(result === '00'){
+                localStorage.removeItem('uid');
+                localStorage.uid = 'test';
+                hiApp.alert('解除绑定成功');
+            }else{
+                hiApp.alert('解除绑定失败');
             }
         });
     }

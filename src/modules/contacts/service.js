@@ -12,7 +12,7 @@ var service = {
     loadContactsForXWL: function (callback) {
 
         xhr.simpleCallForXWL({
-            func: 'getCardList',
+            func: 'appqry/getCardList',
             query: {
                 userId: localStorage.uid
             }
