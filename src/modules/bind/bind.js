@@ -28,6 +28,10 @@ var bindModule = {
             hiApp.alert('非微信端访问');
             return;
         }
+        if(null === username || username === undefined || username === '' || username === 'test'){
+            hiApp.alert('当前用户为匿名用户或测试用户，无法绑定微信');
+            return;
+        }
         hiApp.showPreloader(i18n.index.sending);
         xhr.simpleCallForXWL({
             func:'appuser/bind',
@@ -45,6 +49,7 @@ var bindModule = {
                     hiApp.closeModal('.bind-popup');
                     //Refresh Timeline
                 }, 1300);
+                window.location.reload();
             }else{
                 hiApp.alert('绑定失败');
             }
@@ -74,6 +79,7 @@ var bindModule = {
                 localStorage.removeItem('uid');
                 localStorage.uid = 'test';
                 hiApp.alert('解除绑定成功');
+                window.location.reload();
             }else{
                 hiApp.alert('解除绑定失败');
             }
