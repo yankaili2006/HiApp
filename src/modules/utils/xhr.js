@@ -33,7 +33,7 @@ module.exports = {
     getRequestURLForXWL: function(options){
         var query = options.query || {};
         var func = options.func || '';
-        var test = true;
+        var test = false;
         var postfix = '.json';
         var prefix = '';
         if(!test){
