@@ -38,7 +38,7 @@ module.exports = {
         var prefix = '';
         if(!test){
             postfix = '';
-            prefix = 'http://wx.zhixuntongda.com/';
+            prefix = 'http://wx-h5.zhixuntongda.com/';
         }
         var apiServer = prefix + func + postfix +
             (appFunc.isEmpty(query) ? '' : '?');

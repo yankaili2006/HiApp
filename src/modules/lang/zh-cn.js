@@ -20,8 +20,8 @@ module.exports = {
     index: {
         nothing_found: '未有匹配结果',
         nothing_loaded:'没有加载到新动态',
-        tweet: '动态',
-        contacts: '联系人',
+        tweet: '短信',
+        contacts: '卡号',
         setting: '设置',
         sen_tweet: '发动态',
         send_placeholder: '呃...说点什么吧？',
