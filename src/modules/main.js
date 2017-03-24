@@ -1,5 +1,6 @@
 require('framework7');
 require('../style/less/app.less');
+//var socketModule = require('./websocket/websocket');
 
 var appFunc = require('./utils/appFunc'),
     appService = require('./services/appService'),
@@ -45,6 +46,9 @@ var app = {
                 });
                 break;
         }
+        //websocket
+        //socketModule.init();
+
 
     },
     initFramework7: function(){
@@ -77,8 +81,6 @@ var app = {
             modalButtonOk: i18n.global.modal_button_ok,
             modalButtonCancel: i18n.global.cancel,
             preroute: function(view, options){
-                console.log(view);
-                console.log(options);
                 return true;
             },
             template7Pages: true,

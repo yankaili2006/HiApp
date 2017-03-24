@@ -24,39 +24,8 @@ var home = {
         });
     },
     refreshTimeline: function(){
-
-        service.refreshTimeline(function(tl){
-            // Find newest msg id in ptrContent;
-
-            home.refreshItemTime();
-
-            var newestId = $$('#homeView').find('.home-timeline .card'). eq(0).data('id');
-
-            setTimeout(function () {
-
-                $$('#homeView .refresh-click').find('i').removeClass('ios7-reloading');
-
-                if(parseInt(newestId) === 48) {
-                    home.showLoadResult(i18n.index.nothing_loaded);
-                    hiApp.pullToRefreshDone();
-                    return false;
-                }
-
-                var length = tl.length;
-
-                if(length >= 15){
-                    home.renderTimeline(tl);
-                }else if(length > 0){
-                    home.renderTimeline(tl, 'prepend');
-                }else{
-                    home.showLoadResult(i18n.index.nothing_loaded);
-                }
-
-                hiApp.pullToRefreshDone();
-
-            },1500);
-
-        });
+        home.getTimeline();
+        hiApp.pullToRefreshDone();
     },
     infiniteTimeline: function(){
         var $this = $$(this);
@@ -149,7 +118,7 @@ var home = {
             element: '#homeView',
             selector: '.pull-to-refresh-content',
             event: 'refresh',
-            handler: this.getTimeline
+            handler: this.refreshTimeline
         },{
             element: '#homeView',
             selector: '.pull-to-refresh-content',
