@@ -131,13 +131,21 @@ var app = {
         //如果uid是test则表明为测试账号
         var uid = appFunc.getCookie('uid');
         var openId = appFunc.getCookie('openId');
+        var userName = appFunc.getCookie('userName');
         console.log('uid:' + uid);
         console.log('openid:' + openId);
+        console.log('userName:' + userName);
         if(uid == null || uid == ''){
+            window.alert('uid 不应为空');
             uid = 'test';
+        }
+        if(userName == null || userName == ''){
+            //window.alert('userName 不应为空');
+            userName = '用户名为空';
         }
         localStorage.uid = uid;
         localStorage.openId = openId;
+        localStorage.userName = userName;
 
         // init app
         router.init();

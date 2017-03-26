@@ -36,7 +36,7 @@ var bindModule = {
         xhr.simpleCallForXWL({
             func:'appuser/bind',
             query:{
-                userId: username,
+                userName: username,
                 password: password,
                 openId: openid
             }
@@ -49,6 +49,7 @@ var bindModule = {
                     hiApp.closeModal('.bind-popup');
                     //Refresh Timeline
                 }, 1300);
+                localStorage.userName = username;
                 window.location.reload();
             }else{
                 hiApp.alert('绑定失败');
