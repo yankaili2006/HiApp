@@ -50,6 +50,7 @@ var bindModule = {
                     //Refresh Timeline
                 }, 1300);
                 localStorage.userName = username;
+                localStorage.userId = res.userId;
                 window.location.reload();
             }else{
                 hiApp.alert('绑定失败');
