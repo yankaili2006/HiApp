@@ -45,7 +45,7 @@ var service = {
         },function(res){
             var list = res.list;
             for(var i = 0; i < list.length; i++){
-                if(list[i].type === '1'){
+                if(list[i].type === 1){
                     list[i].from = "sent";
                 }else {
                     list[i].from = "received";
