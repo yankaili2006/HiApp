@@ -45,7 +45,11 @@ var service = {
         },function(res){
             var list = res.list;
             for(var i = 0; i < list.length; i++){
-                list[i].from = "received";
+                if(list[i].type === '1'){
+                    list[i].from = "sent";
+                }else {
+                    list[i].from = "received";
+                }
             }
             callback(res.list);
         });
