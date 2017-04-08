@@ -14,7 +14,7 @@ var service = {
         xhr.simpleCallForXWL({
             func: 'appqry/getCardList',
             query: {
-                userId: localStorage.uid
+                userId: localStorage.userId
             }
         }, function(res){
             var data = service.convert(res);

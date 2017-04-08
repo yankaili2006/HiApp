@@ -27,7 +27,7 @@ var service = {
     },
     //get Message for xwl
     getMessagesForXWL: function(cardno, callback){
-        var userId = localStorage.uid;
+        var userId = localStorage.userId;
         var startDate = '19700101';
         var endDate = appFunc.getYYYYMMDD();
         var pno = '1';
@@ -57,7 +57,7 @@ var service = {
         xhr.simpleCallForXWL({
             func: 'appbusi/sendmsg',
             query: {
-                'userId': localStorage.uid,
+                'userId': localStorage.userId,
                 'msisdn': cardno,
                 'content': content
             }

@@ -5,7 +5,7 @@ var service = {
         xhr.simpleCallForXWL({
             func:'appbusi/getmsggroup',
             query:{
-                userId: localStorage.uid,
+                userId: localStorage.userId,
                 pno:1,
                 psize:10
             }

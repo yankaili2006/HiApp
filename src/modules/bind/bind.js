@@ -58,12 +58,12 @@ var bindModule = {
     },
     unbindUser: function(){
         var openId = localStorage.openId;
-        var uid = localStorage.uid;
+        var userId = localStorage.userId;
         if(null === openId || openId === undefined || openId === ''){
             hiApp.alert('非微信端访问');
             return;
         }
-        if(null === uid || uid === undefined || uid === '' || uid === 'test'){
+        if(null === userId || userId === undefined || userId === '' || userId === 'test'){
             hiApp.alert('当前用户为匿名用户或测试用户，无法解除绑定');
             return;
         }
@@ -77,8 +77,6 @@ var bindModule = {
             hiApp.hidePreloader();
             var result = res.result;
             if(result === '00'){
-                localStorage.removeItem('uid');
-                localStorage.uid = 'test';
                 hiApp.alert('解除绑定成功');
                 window.location.reload();
             }else{

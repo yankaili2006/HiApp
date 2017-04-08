@@ -1,6 +1,6 @@
 module.exports = {
     app: {
-        name: '讯物联'
+        name: '物讯通'
     },
     global: {
         cancel: '取消',

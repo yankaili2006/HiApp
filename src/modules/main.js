@@ -46,9 +46,6 @@ var app = {
                 });
                 break;
         }
-        //websocket
-        //socketModule.init();
-
 
     },
     initFramework7: function(){
@@ -129,21 +126,14 @@ var app = {
 
         //读取cookie,如果存在uid和openid,那么说明是在微信端打开的网页，则表明已登录
         //如果uid是test则表明为测试账号
-        var uid = appFunc.getCookie('uid');
+        var userId = appFunc.getCookie('userId');
         var openId = appFunc.getCookie('openId');
         var userName = appFunc.getCookie('userName');
-        console.log('uid:' + uid);
+        console.log('userId:' + userId);
         console.log('openid:' + openId);
         console.log('userName:' + userName);
-        if(uid == null || uid == ''){
-            window.alert('uid 不应为空');
-            uid = 'test';
-        }
-        if(userName == null || userName == ''){
-            //window.alert('userName 不应为空');
-            userName = '用户名为空';
-        }
-        localStorage.uid = uid;
+
+        localStorage.userId = userId;
         localStorage.openId = openId;
         localStorage.userName = userName;
 
@@ -154,3 +144,29 @@ var app = {
 };
 
 app.initialize();
+
+//websocket
+//var socket = new WebSocket('ws://' + location.hostname + ':8888/');
+//socket.onopen = function(e){
+//    console.log('open');
+//};
+//socket.onclose = function(e){
+//    console.log('close');
+//};
+//socket.onerror = function(e){
+//    console.log('error');
+//};
+//window.mymessages = [];
+//socket.onmessage = function(e){
+//    var message = e.data;
+//    //var node = document.createTextNode(message);
+//    //var div = document.createElement('div');
+//    //div.appendChild(node);
+//    //document.body.insertBefore(div, input);
+//    //input.scrollIntoView();
+//    console.log(message);
+//    window.mymessages.push(message);
+//    //socket.send('echo--' + message);
+//};
+//window.mysocket = socket;
+
