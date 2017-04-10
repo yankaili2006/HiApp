@@ -133,9 +133,15 @@ var app = {
         console.log('openid:' + openId);
         console.log('userName:' + userName);
 
-        localStorage.userId = userId;
-        localStorage.openId = openId;
-        localStorage.userName = userName;
+        if(localStorage.userId === undefined) {
+            localStorage.userId = userId;
+        }
+        if(localStorage.openId === undefined){
+            localStorage.openId = openId;
+        }
+        if(localStorage.userName === undefined) {
+            localStorage.userName = userName;
+        }
 
         // init app
         router.init();

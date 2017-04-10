@@ -51,6 +51,8 @@ var bindModule = {
                 }, 1300);
                 localStorage.userName = username;
                 localStorage.userId = res.userId;
+                appFunc.setCookie('userName',username);
+                appFunc.setCookie('userId', res.userId);
                 window.location.reload();
             }else{
                 hiApp.alert('绑定失败');
@@ -79,6 +81,10 @@ var bindModule = {
             var result = res.result;
             if(result === '00'){
                 hiApp.alert('解除绑定成功');
+                localStorage.userName = '888';
+                localStorage.userId = '9b07afa6f8534a1d8a5b887bb561d697';
+                appFunc.setCookie('userName','888');
+                appFunc.setCookie('userId', '9b07afa6f8534a1d8a5b887bb561d697');
                 window.location.reload();
             }else{
                 hiApp.alert('解除绑定失败');
