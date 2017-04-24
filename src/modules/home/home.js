@@ -17,8 +17,9 @@ var home = {
             home.renderTimeline(tl.dataList);
             //设置当前页数，总页数
             $$('#homeView .infinite-scroll').data('curPageNum',1);
-            $$('#homeView .infinite-scroll').data('totalPageNum', t1.totalPageNum);
-            $$('#homeView .infinite-scroll').data('totalResultNum', t1.totalResultNum);
+            $$('#homeView .infinite-scroll').data('totalPageNum', tl.totalPageNum);
+            $$('#homeView .infinite-scroll').data('totalResultNum', tl.totalResultNum);
+
             hiApp.hideIndicator();
             //Unlock scroll loading status
             var ptrContent = $$('#homeView').find('.pull-to-refresh-content');
@@ -42,8 +43,8 @@ var home = {
                     home.renderTimeline(tl.dataList, 'append');
                     //设置当前页数，总页数
                     $$('#homeView .infinite-scroll').data('curPageNum', curPageNum + 1);
-                    $$('#homeView .infinite-scroll').data('totalPageNum', t1.totalPageNum);
-                    $$('#homeView .infinite-scroll').data('totalResultNum', t1.totalResultNum);
+                    $$('#homeView .infinite-scroll').data('totalPageNum', tl.totalPageNum);
+                    $$('#homeView .infinite-scroll').data('totalResultNum', tl.totalResultNum);
                     hiApp.hideIndicator();
                 },500);
         });
