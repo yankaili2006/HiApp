@@ -16,14 +16,17 @@ var contacts = {
                 searchIn: '.item-title'
             });
 
-            service.loadContactsForXWL(function(c){
+            service.loadContactsForXWL(1,10,function(c){
                 setTimeout(function(){
                     var renderData = {
-                        contacts: c
+                        contacts: c.dataMap_convert
                     };
                     var output = appFunc.renderTpl(template, renderData);
                     $$('#contactView .contacts-list ul').html(output);
-
+                    //设置当前页数，总页数
+                    $$('#contactView .infinite-scroll').data('curPageNum',1);
+                    $$('#contactView .infinite-scroll').data('totalPageNum', c.totalPageNum);
+                    $$('#contactView .infinite-scroll').data('totalResultNum', c.totalResultNum);
                     hiApp.hideIndicator();
 
                 },500);
@@ -59,12 +62,43 @@ var contacts = {
             return true;
         }
     },
+    infiniteContacts: function(){
+        var curPageNum = $$('#contactView .infinite-scroll').data('curPageNum');
+        var totalPageNum = $$('#contactView .infinite-scroll').data('totalPageNum');
+        if(curPageNum === totalPageNum){
+            return;
+        }
+        hiApp.showIndicator();
+        service.loadContactsForXWL(curPageNum + 1, 10, function(c){
+            setTimeout(function(){
+                var renderData = {
+                    contacts: c
+                };
+                var output = appFunc.renderTpl(template, renderData);
+                //$$('#contactView .contacts-list ul').html(output);
+                //设置当前页数，总页数
+                $$('#contactView .infinite-scroll').data('curPageNum',curPageNum + 1);
+                $$('#contactView .infinite-scroll').data('totalPageNum', c.totalPageNum);
+                $$('#contactView .infinite-scroll').data('totalResultNum', c.totalResultNum);
+                $$('#contactView  .contacts-list ul').append(output);
+                hiApp.hideIndicator();
+
+            },500);
+        });
+
+    },
     bindEvents: function(){
         var bindings = [{
             element: '#contactView',
             event: 'show',
             handler: contacts.loadContactsForXWL
-        }];
+        },
+            {
+                element: '#contactView',
+                selector: '.infinite-scroll',
+                event: 'infinite',
+                handler: this.infiniteContacts
+            }];
 
         appFunc.bindEvents(bindings);
     }

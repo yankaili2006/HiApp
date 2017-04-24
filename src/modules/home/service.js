@@ -1,30 +1,17 @@
 var xhr = require('../utils/xhr');
 
 var service = {
-    getTimeline: function(callback){
+    getTimeline: function(pno, callback){
         xhr.simpleCallForXWL({
             func:'appbusi/getmsggroup',
             query:{
                 userId: localStorage.userId,
-                pno:1,
+                pno:pno,
                 psize:10
             }
         },function(res){
-            var data = service.convertTimeline(res);
-            callback(data);
+            callback(res);
         });
-    },
-    convertTimeline: function(data){
-        var res = [];
-        for(tl in data){
-            if(tl !== 'result'){
-                if(data[tl].length > 0){
-                    data[tl][0]["length"] = data[tl].length;
-                    res.push(data[tl][0]);
-                }
-            }
-        }
-        return res;
     },
     refreshTimeline: function(callback){
         xhr.simpleCall({

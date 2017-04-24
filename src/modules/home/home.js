@@ -12,12 +12,14 @@ var home = {
     },
     getTimeline: function(){
         var that = this;
-
-        service.getTimeline(function(tl){
-            home.renderTimeline(tl);
-
+        hiApp.showIndicator();
+        service.getTimeline(1, function(tl){
+            home.renderTimeline(tl.dataList);
+            //设置当前页数，总页数
+            $$('#homeView .infinite-scroll').data('curPageNum',1);
+            $$('#homeView .infinite-scroll').data('totalPageNum', t1.totalPageNum);
+            $$('#homeView .infinite-scroll').data('totalResultNum', t1.totalResultNum);
             hiApp.hideIndicator();
-
             //Unlock scroll loading status
             var ptrContent = $$('#homeView').find('.pull-to-refresh-content');
             ptrContent.data('scrollLoading','unloading');
@@ -28,30 +30,22 @@ var home = {
         hiApp.pullToRefreshDone();
     },
     infiniteTimeline: function(){
+        var curPageNum = $$('#homeView .infinite-scroll').data('curPageNum');
+        var totalPageNum = $$('#homeView .infinite-scroll').data('totalPageNum');
+        if(curPageNum === totalPageNum){
+            return;
+        }
         var $this = $$(this);
-
         hiApp.showIndicator();
-        service.infiniteTimeline(function(tl){
-            var status = $this.data('scrollLoading');
-            if (status === 'loading') return;
-
-            $this.data('scrollLoading','loading');
-
-            var items = $this.find('.home-timeline .card');
-            var length = items.length;
-            var lastId = items.eq(length - 1).data('id');
-            if(parseInt(lastId) === 24){
-                hiApp.detachInfiniteScroll($this);
-                hiApp.hideIndicator();
-            }else{
-
-                setTimeout(function(){
-                    $this.data('scrollLoading','unloading');
-                    home.renderTimeline(tl, 'append');
-
+        service.getTimeline(curPageNum + 1, function(tl){
+                setTimeout(function() {
+                    home.renderTimeline(tl.dataList, 'append');
+                    //设置当前页数，总页数
+                    $$('#homeView .infinite-scroll').data('curPageNum', curPageNum + 1);
+                    $$('#homeView .infinite-scroll').data('totalPageNum', t1.totalPageNum);
+                    $$('#homeView .infinite-scroll').data('totalResultNum', t1.totalResultNum);
                     hiApp.hideIndicator();
-                },1500);
-            }
+                },500);
         });
     },
     refreshTimelineByClick: function(){
